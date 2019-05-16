@@ -24,9 +24,9 @@
         <th scope="row">{{$item->id}}</th>
         <td>{{$item->name}}</td>
         <td>{{$item->discription}}</td>
-        @for ($i = 0; $i < $count; $i++)
+        {{-- @for ($i = 0; $i < $count; $i++)
             <td>{{$item->name}}</td>
-        @endfor
+        @endfor --}}
         <th scope="row"><a href="/department/show/{{$item->id}}">View</a></th>
         <th scope="row"><a href="/department/edit/{{$item->id}}">Edit</a></th>
         <th scope="row">
