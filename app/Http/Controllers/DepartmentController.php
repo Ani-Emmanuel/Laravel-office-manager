@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\department;
+use App\Department;
+use App\Staff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartmentController extends Controller
 {
@@ -15,6 +17,12 @@ class DepartmentController extends Controller
     public function index()
     {
         //
+        // $user = DB::table('staff')
+        // ->join('department', 'department.user_id', 'staff.id')
+        // ->select('staff.firstname', 'staff.select');
+        // dd($user);
+        $department = Department::all();
+        return view('department.index',compact('department'));
     }
 
     /**
@@ -25,6 +33,10 @@ class DepartmentController extends Controller
     public function create()
     {
         //
+        $user = Staff::all();
+        return view('department.create', compact('user'));
+
+        
     }
 
     /**
@@ -36,6 +48,18 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->all());
+        $department = Department::create(request([
+            'name',
+            'discription',
+            'user_id'
+        ]));
+
+        if($department){
+            return back()->with('success', 'Department Created Successfully');    
+        }
+
+        return back()->with('error', 'An error occurred while trying to create a department');
     }
 
     /**
@@ -44,9 +68,12 @@ class DepartmentController extends Controller
      * @param  \App\department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(department $department)
+    public function show($id)
     {
         //
+        $staff = Staff::all();
+         $dept = Department::find($id);
+        return view('department.show', compact(['dept','staff']));
     }
 
     /**
@@ -55,9 +82,11 @@ class DepartmentController extends Controller
      * @param  \App\department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit(department $department)
+    public function edit($id)
     {
         //
+        $editDept = Department::find($id);
+        return view('department.edit', compact('editDept'));
     }
 
     /**

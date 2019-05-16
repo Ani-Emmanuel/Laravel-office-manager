@@ -51,7 +51,7 @@
   </div>
    <div class="form-group">
     <label for="role">Select Role</label><br>
-    <select name="select">
+    <select name="select" class="form-control">
       <option value="system Admin">System Admin</option>
       <option value="Programmer">Programmer</option>
       <option value="Code Analyst">Code Analyst</option>
@@ -59,6 +59,18 @@
       <option value="Hacker">Hacker</option>
     </select>
   </div>
+
+  {{-- <div class="form-group">
+    <label for="role">Select Department</label><br>
+    <select name="select" class="form-control">
+        <option value="">Select a Department</option>
+         @if (count($department)>0)
+            @foreach ($department as $item)
+                <option value={{$item->id}}>{{$item->name}}</option>
+            @endforeach 
+         @endif
+    </select>
+  </div> --}}
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

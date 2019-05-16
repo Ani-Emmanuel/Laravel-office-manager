@@ -20,7 +20,8 @@ class CreateStaffTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('select');
-            $table->integer('departments');
+            $table->integer('department_id')->nullable();
+            //create$table->foreign('department')->references('id')->on('departments');
             $table->timestamps();
         });
     }

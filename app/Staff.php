@@ -13,7 +13,8 @@ class Staff extends Model
         'lastname',
         'email',
         'phone',
-        'select'
+        'select',
+        'department_id'
 
     ];
     public function department(){

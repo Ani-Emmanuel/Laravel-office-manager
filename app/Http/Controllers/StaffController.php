@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Staff;
+use App\Department;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -27,6 +28,7 @@ class StaffController extends Controller
     public function create()
     {
         // returning the form for creating staff
+        //$department = Department::all();
         return view('staff.create');
     }
 
@@ -107,11 +109,11 @@ class StaffController extends Controller
     public function destroy($id)
     {
         //
-         dd($id);
+        // dd($id);
         $staffDelete = Staff::find($id);
         if($staffDelete->delete()){
            return back();
         }
-        ;
+        
     }
 }
